@@ -5,7 +5,7 @@ let enabled = true
 let chatColor = '§f'
 let senderColor = '§7'
 client.on('OnChat', (data) => {
-  if (!enabled) return
+  if (data.message.startsWith((client.commands as any)?.prefix ?? '-') || !enabled) return
   if (cancelMessages) data.cancel()
   const ranks = getRanks(data.sender)?.map((x) => `${x}§r`)
   console.log(ranks.length)
