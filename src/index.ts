@@ -1,9 +1,13 @@
-import { client, Player } from 'beapi-core'
+import { Client, Player } from 'beapi-core'
+
+const client = new Client({
+  commandsDisabled: true,
+})
 
 let cancelMessages = true
 let enabled = true
-let chatColor = '§f'
-let senderColor = '§7'
+let chatColor = `§f`
+let senderColor = `§7`
 client.on('OnChat', (data) => {
   if (data.message.startsWith((client.commands as any)?.prefix ?? '-') || !enabled) return
   if (cancelMessages) data.cancel()
